@@ -1,0 +1,21 @@
+{
+
+  "manifest_version": 2,
+  "name": "neogulman",
+  "version": "1.0",
+
+  "description": "it will help save your time.",
+
+  "icons": {
+    "48": "48.jpg",
+    "96": "96.jpg"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.mozilla.org/*"],
+      "js": ["neogul.js"]
+    }
+  ]
+
+}
