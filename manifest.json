@@ -11,11 +11,13 @@
     "96": "96.jpg"
   },
 
-  "content_scripts": [
-    {
-      "matches": ["*://*.mozilla.org/*"],
-      "js": ["neogul.js"]
-    }
-  ]
+  "permissions": [
+    "activeTab"
+  ],
 
+  "browser_action": {
+    "default_icon": "48.jpg",
+    "default_title": "rakoon",
+    "default_popup": "popup.html"
+  }
 }
