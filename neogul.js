@@ -11,9 +11,11 @@ $(function(){
         video.currentTime = video.duration - 1.0;
         disableNB();
         setTimeout(function(){
-            enableNB();
             $(".btn_nextpage").click();
         }, 1000);
+        setTimeout(function(){
+           enableNB();
+        }, 2000);      
     })
 });
 
