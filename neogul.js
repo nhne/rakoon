@@ -10,6 +10,7 @@ $(function(){
         (document.head||document.documentElement).appendChild(script);
         script.parentNode.removeChild(script);
 
+        //video skipping part
         var video = $("video")[0];
         if(video.paused){
             video.play();
@@ -24,6 +25,21 @@ $(function(){
         setTimeout(function(){
            enableNB();
         }, 2200);      
+    });
+    
+    //question part
+    $("[data-answer]").each(function(index){
+        var ans = $(this).attr("data-answer").split(",");
+        if(isNaN(ans[0])){
+            for(var i = 0; i < ans.length; i++){
+                $(this).find("input[type=text]").eq(i).val(ans[i]);
+            }
+        }
+        else{
+            for(var i = 0; i < ans.length; i++){
+                $(this).find("input[value=" + ans[i] + "]").prop("checked", true);
+            }
+        }
     })
 });
 
