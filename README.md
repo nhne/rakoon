@@ -7,7 +7,7 @@
 *공통: zip을 다운받고 압축을 푸세요~*
 
 ### 파이어폭스
-  [about:debugging](about:debugging) -> 임시로 부가기능 불러오기
+  https://addons.mozilla.org/ko/firefox/addon/너굴맨/
 
 ### 크롬
   설정 -> 도구 -> 확장프로그램 -> 개발자 모드 -> 프로그램 로드<br>
