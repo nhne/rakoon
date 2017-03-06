@@ -1,8 +1,11 @@
 var nb;
+var STRING_SKIP = "스킵해 보자구";
+var STRING_HOLD = "스킵중이야";
+
 //video skipping part
 if(document.getElementById("example_video_1") != null){
     nb = document.createElement("button");
-    nb.textContent = "스킵해 보자구";
+    nb.textContent = STRING_SKIP;
     nb.setAttribute("class", "neogulman");
     nb.addEventListener("click", function(){
         var script = document.createElement('script');
@@ -47,11 +50,11 @@ for(var index = 0; index < data.length; index++){
 }
 
 function disableNB(){
-    nb.textContent = "스킵중이야~";
+    nb.textContent = STRING_HOLD;
     nb.setAttribute("disabled", "disabled");
 }
 
 function enableNB(){
-    nb.textContent = "스킵해 보자구";
+    nb.textContent = STRING_SKIP;
     nb.removeAttribute("disabled");
 }
