@@ -1,17 +1,16 @@
 var nb;
-
-$(function(){
-    $("#example_video_1").after('<button class="neogulman">스킵해 보자구</button>');
-    nb = $("button.neogulman");
-    nb.on("click", function(){
-        //removing seeking event on video
+//video skipping part
+if(document.getElementById("example_video_1") != null){
+    nb = document.createElement("button");
+    nb.textContent = "스킵해 보자구";
+    nb.setAttribute("class", "neogulman");
+    nb.addEventListener("click", function(){
         var script = document.createElement('script');
         script.textContent = 'player.off("seeking")';
         (document.head||document.documentElement).appendChild(script);
         script.parentNode.removeChild(script);
 
-        //video skipping part
-        var video = $("video")[0];
+        var video = document.getElementsByTagName("video")[0];
         if(video.paused){
             video.play();
             setTimeout(function(){nb.click();}, 600);
@@ -23,30 +22,36 @@ $(function(){
             $(".btn_nextpage").click();
         }, 1800);
         setTimeout(function(){
-           enableNB();
-        }, 2200);      
+            enableNB();
+        }, 2200);
     });
-    
-    //question part
-    $("[data-answer]").each(function(index){
-        var ans = $(this).attr("data-answer").split(",");
-        if(isNaN(ans[0])){
-            for(var i = 0; i < ans.length; i++){
-                $(this).find("input[type=text]").eq(i).val(ans[i]);
-            }
+    document.getElementById("example_video_1").parentNode.appendChild(nb);
+}
+
+//question part
+var data = document.querySelectorAll("[data-answer]");
+for(var index = 0; index < data.length; index++){
+    var d = data[index];
+    var ans = d.getAttribute("data-answer").split(",");
+    console.log(ans);
+    if(isNaN(ans[0])){
+        for(var i = 0; i < ans.length; i++){
+            d.querySelectorAll("input[type=text]")[i].setAttribute("value", ans[i].trim());
         }
-        else{
-            for(var i = 0; i < ans.length; i++){
-                $(this).find("input[value=" + ans[i] + "]").prop("checked", true);
-            }
+    }
+    else{
+        for(var i = 0; i < ans.length; i++){
+            d.querySelector("input[value='" + ans[i] + "']").checked = true;
         }
-    })
-});
+    }
+}
 
 function disableNB(){
-    nb.text("스킵중이야~").attr("disabled", "disabled");
+    nb.textContent = "스킵중이야~";
+    nb.setAttribute("disabled", "disabled");
 }
 
 function enableNB(){
-    nb.text("스킵해 보자구").removeAttr("disabled");
+    nb.textContent = "스킵해 보자구";
+    nb.removeAttribute("disabled");
 }
